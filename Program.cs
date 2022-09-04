@@ -141,6 +141,90 @@
 // 18 20
 // 15 18
 
+// Console.Clear();
+// int Prompt(string message)
+// {
+//     System.Console.Write(message);
+//     int result = Convert.ToInt32(Console.ReadLine());
+//     return result;
+// }
+// int[,] FillArray(int numLine, int numColumns, int maxRand, int minRand)
+// {
+//     int[,] matrix = new int[numLine, numColumns];
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             matrix[i, j] = new Random().Next(minRand, maxRand + 1);
+//         }
+//     }
+//     return matrix;
+// }
+// void PrintArray(int[,] matrix)
+// {
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             Console.Write($"\t{matrix[i, j],6}");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+// int numLine1 = Prompt("Введите количество строк массива №1 ");
+// int numColumns1 = Prompt("Введите количество столбцов массива №1 ");
+// int maxRand1 = Prompt("Введите верхнюю границу диапазона массива №1 ");
+// int minRand1 = Prompt("Введите нижнюю границу диапазона массива №1 ");
+// int[,] matrix1 = FillArray(numLine1, numColumns1, maxRand1, minRand1);
+// PrintArray(matrix1);
+// int numLine2 = Prompt("Введите количество строк массива №2 ");
+// int numColumns2 = Prompt("Введите количество столбцов массива №2 ");
+// int maxRand2 = Prompt("Введите верхнюю границу диапазона  массива №2 ");
+// int minRand2 = Prompt("Введите нижнюю границу диапазона массива №2 ");
+// int[,] matrix2 = FillArray(numLine2, numColumns2, maxRand2, minRand2);
+// PrintArray(matrix2);
+
+// int[,] SumMatrix(int newLine, int newColumns)
+// {
+//     int[,] matrix = new int[newLine, newColumns];
+//     for (int i = 0; i < numLine1; i++)
+//     {
+
+//         for (int j = 0; j < numColumns2; j++)
+//         {
+
+//             for (int k = 0; k < numLine2; k++)
+//             {
+//                 matrix[i, j] += matrix1[i, k] * matrix2[k, j];
+//             }
+//         }
+//     }
+//     return matrix;
+// }
+// void PrintMatrix(int[,] matrix)
+// {
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             Console.Write($"\t{matrix[i, j],6}");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+// Console.WriteLine($"Произведение двух матриц:");
+// int newLine = numLine1;
+// int newColumns = numColumns2;
+// int[,] matrix = SumMatrix(newLine, newColumns);
+// PrintMatrix(matrix);
+
+//Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
+//Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+// Массив размером 2 x 2 x 2
+// 66(0,0,0) 25(0,1,0)
+// 34(1,0,0) 41(1,1,0)
+// 27(0,0,1) 90(0,1,1)
+// 26(1,0,1) 55(1,1,1)
 Console.Clear();
 int Prompt(string message)
 {
@@ -148,76 +232,55 @@ int Prompt(string message)
     int result = Convert.ToInt32(Console.ReadLine());
     return result;
 }
-int[,] FillArray(int numLine, int numColumns, int maxRand, int minRand)
+int[,,] FillArray(int numLine, int numColumns, int numWertikal)
 {
-    int[,] matrix = new int[numLine, numColumns];
+    int[,,] matrix = new int[2, 2, 2];
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(minRand, maxRand + 1);
-        }
-    }
-    return matrix;
-}
-void PrintArray(int[,] matrix)
-{
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            Console.Write($"\t{matrix[i, j],6}");
-        }
-        Console.WriteLine();
-    }
-}
-int numLine1 = Prompt("Введите количество строк массива №1 ");
-int numColumns1 = Prompt("Введите количество столбцов массива №1 ");
-int maxRand1 = Prompt("Введите верхнюю границу диапазона №1 ");
-int minRand1 = Prompt("Введите нижнюю границу диапазона №1 ");
-int[,] matrix1 = FillArray(numLine1, numColumns1, maxRand1, minRand1);
-PrintArray(matrix1);
-int numLine2 = Prompt("Введите количество строк массива №2 ");
-int numColumns2 = Prompt("Введите количество столбцов массива №2 ");
-int maxRand2 = Prompt("Введите верхнюю границу диапазона №2 ");
-int minRand2 = Prompt("Введите нижнюю границу диапазона №2 ");
-int[,] matrix2 = FillArray(numLine2, numColumns2, maxRand2, minRand2);
-PrintArray(matrix2);
-
-int[,] SumMatrix(int newLine, int newColumns)
-{
-    int[,] matrix = new int[newLine, newColumns];
-    for (int i = 0; i < numLine1; i++)
-    {
-
-        for (int j = 0; j < numColumns2; j++)
-        {
-
-            for (int k = 0; k < numLine2; k++)
+            for (int n = 0; n < matrix.GetLength(2); n++)
             {
-                matrix[i, j] += matrix1[i, k] * matrix2[k, j];
+                int number = new Random().Next(10, 100);
+                if (ChengeElement(matrix, number)) continue;
+                {
+                    matrix[i, j, n] = number;
+                }
             }
         }
     }
     return matrix;
 }
-void PrintMatrix(int[,] matrix)
+void PrintArray(int[,,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            Console.Write($"\t{matrix[i, j],6}");
+            for (int n = 0; n < matrix.GetLength(2); n++)
+            {
+                Console.Write($"{matrix[i, j, n],1} ({i},{j},{n})   ");
+            }
+            Console.WriteLine();
         }
-        Console.WriteLine();
     }
 }
-Console.WriteLine($"Произведение двух матриц:");
-int newLine = numLine1;
-int newColumns = numColumns2;
-int[,] matrix = SumMatrix(newLine, newColumns);
-PrintMatrix(matrix);
-
+bool ChengeElement(int[,,] array, int element)
+{
+    for (int x = 0; x < array.GetLength(0); x++)
+    {
+        for (int y = 0; y < array.GetLength(1); y++)
+        {
+            for (int z = 0; z < array.GetLength(2); z++)
+            {
+                if (array[x, y, z] == element) return true;
+            }
+        }
+    }
+    return false;
+}
+int[,,] matrix = FillArray(2, 2, 2);
+PrintArray(matrix);
 
 
 
