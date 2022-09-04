@@ -225,102 +225,114 @@
 // 34(1,0,0) 41(1,1,0)
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
-Console.Clear();
-int Prompt(string message)
-{
-    System.Console.Write(message);
-    int result = Convert.ToInt32(Console.ReadLine());
-    return result;
-}
-int[,,] FillArray(int numLine, int numColumns, int numWertikal)
-{
-    int[,,] matrix = new int[2, 2, 2];
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            for (int n = 0; n < matrix.GetLength(2); n++)
-            {
-                int number = new Random().Next(10, 100);
-                if (ChengeElement(matrix, number)) continue;
-                {
-                    matrix[i, j, n] = number;
-                }
-            }
-        }
-    }
-    return matrix;
-}
-void PrintArray(int[,,] matrix)
-{
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            for (int n = 0; n < matrix.GetLength(2); n++)
-            {
-                Console.Write($"{matrix[i, j, n],1} ({i},{j},{n})   ");
-            }
-            Console.WriteLine();
-        }
-    }
-}
-bool ChengeElement(int[,,] array, int element)
-{
-    for (int x = 0; x < array.GetLength(0); x++)
-    {
-        for (int y = 0; y < array.GetLength(1); y++)
-        {
-            for (int z = 0; z < array.GetLength(2); z++)
-            {
-                if (array[x, y, z] == element) return true;
-            }
-        }
-    }
-    return false;
-}
-int[,,] matrix = FillArray(2, 2, 2);
-PrintArray(matrix);
-
-
-
-// int stringsum = 0;
-// int sumMin = numLine * numColumns * maxRand;
-// int numstring = 0;
-// for (int i = 0; i < matrix.GetLength(0); i++)
+// Console.Clear();
+// int Prompt(string message)
 // {
-//     for (int n = 0; n < matrix.GetLength(1); n++)
-//         stringsum += matrix[i, n];
-//     if (stringsum < sumMin)
+//     System.Console.Write(message);
+//     int result = Convert.ToInt32(Console.ReadLine());
+//     return result;
+// }
+// int[,,] FillArray(int numLine, int numColumns, int numWertikal)
+// {
+//     int[,,] matrix = new int[2, 2, 2];
+//     for (int i = 0; i < matrix.GetLength(0); i++)
 //     {
-//         sumMin = stringsum;
-//         numstring = i + 1;
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             for (int n = 0; n < matrix.GetLength(2); n++)
+//             {
+//                 int number = new Random().Next(10, 100);
+//                 if (ChengeElement(matrix, number)) continue;
+//                 {
+//                     matrix[i, j, n] = number;
+//                 }
+//             }
+//         }
 //     }
-//     stringsum = 0;
+//     return matrix;
 // }
-
-//System.Console.WriteLine($"Минимум в строке  {numstring} равен  {sumMin}");
-
-
-// 
-
-// FillMatrix(matrix);
-// PrintArray(matrix);
-// System.Console.WriteLine(GetSum(matrix));
-//  int GetSum(int[,] matrix)
-//  {
-
-// Array.Sort(matrix); // сортировка элементов массива
-// foreach (int i in matrix) Console.Write($"{matrix}", i);
-// Console.WriteLine();
-
-// int sum = 0;
-// for (int i = 0; i < matrix.GetLength(0); i++)
+// void PrintArray(int[,,] matrix)
 // {
-//     sum += matrix[i, i];
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             for (int n = 0; n < matrix.GetLength(2); n++)
+//             {
+//                 Console.Write($"{matrix[i, j, n],1} ({i},{j},{n})   ");
+//             }
+//             Console.WriteLine();
+//         }
+//     }
 // }
-// return sum;
-//}
-// int max = a[0]; // поиск максимального элемента
-// foreach (int x in a) if (x > max) max = x;
-// Console.WriteLine("max = " + max);
+// bool ChengeElement(int[,,] array, int element)
+// {
+//     for (int x = 0; x < array.GetLength(0); x++)
+//     {
+//         for (int y = 0; y < array.GetLength(1); y++)
+//         {
+//             for (int z = 0; z < array.GetLength(2); z++)
+//             {
+//                 if (array[x, y, z] == element) return true;
+//             }
+//         }
+//     }
+//     return false;
+// }
+// int[,,] matrix = FillArray(2, 2, 2);
+// PrintArray(matrix);
+
+//Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+// Например, на выходе получается вот такой массив:
+// 01 02 03 04
+// 12 13 14 05
+// 11 16 15 06
+// 10 09 08 07
+// Console.Clear();
+// int[,] SpiralMatrix(int newLine, int newColumns)
+// {
+//     int[,] matrix = new int[4, 4];
+//     int size = 4;
+//     int step = 0;
+//     int start = 0;
+//     while (start <= size * size)
+//     {
+//         for (int i = start; i < size; i++)
+//         {
+//             step++;
+//             matrix[start, i] = step;
+//         }
+//         for (int i = start + 1; i < size; i++)
+//         {
+//             step++;
+//             matrix[i, size - 1] = step;
+//         }
+//         for (int i = size - 2; i >= start; i--)
+//         {
+//             step++;
+//             matrix[size - 1, i] = step;
+//         }
+//         for (int i = size - 2; i >= start + 1; i--)
+//         {
+//             step++;
+//             matrix[i, start] = step;
+//         }
+//         size--;
+//         start++;
+//     }
+//     return matrix;
+// }
+// void PrintMatrix(int[,] matrix)
+// {
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             Console.Write($"\t{matrix[i, j],6:d2}");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+// Console.WriteLine();
+// int[,] matrix = SpiralMatrix(4, 4);
+// PrintMatrix(matrix);
